@@ -8,3 +8,4 @@ const getNeighborhoodsList = () => {
 };
 
 export default getNeighborhoodsList;
+
