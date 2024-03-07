@@ -1,4 +1,4 @@
-ass Building {
+class Building {
     constructor(sqft) {
         this._sqft = sqft;
         if (new.target === Building) {
