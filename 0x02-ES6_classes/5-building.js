@@ -1,11 +1,8 @@
 // Define an abstract class named Building
 export default class Building {
   constructor(sqft) {
-    if (this.constructor !== Building) {
-      const props = Object.getOwnPropertyNames(this.constructor.prototype);
-      if (!props.find(e => e === 'evacuationWarningMessage')) {
-        throw new Error('Class extending Building must override evacuationWarningMessage');
-      }
+    if (this.constructor === Building) {
+      throw new Error('Abstract class Building cannot be instantiated directly');
     }
     this._sqft = sqft;
   }
@@ -15,7 +12,7 @@ export default class Building {
   }
 
   set sqft(sqft) {
-    if (typeof sqft !== 'number' && sqft instanceof Number) {
+    if (typeof sqft !== 'number') {
       throw new TypeError('Sqft must be a number');
     }
     this._sqft = sqft;
