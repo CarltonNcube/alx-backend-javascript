@@ -1,16 +1,14 @@
 // Define an abstract class named Building
 class Building {
-  constructor(sqft) {
-    this._sqft = sqft;
-  }
+    constructor(sqft) {
+        this._sqft = sqft;
+    }
 
-  get sqft() {
-    return this._sqft;
-  }
+    get sqft() {
+        return this._sqft;
+    }
 
-  evacuationWarningMessage() {
-    throw new Error('Class extending Building must override evacuationWarningMessage');
-  }
+    evacuationWarningMessage() {
+        throw new Error("Class extending Building must override evacuationWarningMessage");
+    }
 }
-
-export default Building;
