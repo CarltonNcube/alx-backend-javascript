@@ -1,7 +1,7 @@
-class Building {
+export default class Building {
     constructor(sqft) {
         this._sqft = sqft;
-        if (this.constructor === Building) {
+        if (new.target === Building) {
             throw new Error("Cannot instantiate abstract class Building");
         }
         if (typeof this.evacuationWarningMessage !== "function") {
@@ -17,5 +17,3 @@ class Building {
         this._sqft = value;
     }
 }
-
-export default Building;
