@@ -1,8 +1,6 @@
 // Initializes an array of ClassRoom objects with specified sizes
-import ClassRoom from './0-classroom.js';
+import ClassRoom from './0-classroom';
 
 export default function initializeRooms() {
-  const sizes = [19, 20, 34];
-  const classrooms = sizes.map(size => new ClassRoom(size));
-  return classrooms;
+  return [new ClassRoom(19), new ClassRoom(20), new ClassRoom(34)];
 }
