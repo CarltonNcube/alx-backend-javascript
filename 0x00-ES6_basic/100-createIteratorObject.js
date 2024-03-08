@@ -1,14 +1,12 @@
-export default function createIteratorObject(report) {
-  const allEmployees = report.allEmployees;
-
+export default function createIteratorObject({ allEmployees }) {
   const employeeIterator = {
-    [Symbol.iterator]: function() {
+    [Symbol.iterator]() {
       const departments = Object.keys(allEmployees);
       let currentDepartmentIndex = 0;
       let currentEmployeeIndex = 0;
 
       return {
-        next: function() {
+        next() {
           if (currentDepartmentIndex >= departments.length) {
             return { done: true };
           }
@@ -26,9 +24,9 @@ export default function createIteratorObject(report) {
           currentEmployeeIndex++;
 
           return { value: employee, done: false };
-        }
+        },
       };
-    }
+    },
   };
 
   return employeeIterator;
