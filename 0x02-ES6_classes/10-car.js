@@ -1,4 +1,4 @@
-const cloneCarSymbol = Symbol("cloneCar");
+const cloneCarSymbol = Symbol('cloneCar');
 
 class Car {
     constructor(brand, motor, color) {
@@ -13,6 +13,9 @@ class Car {
     }
 
     cloneCar() {
+        if (!(this instanceof Car)) {
+            throw new Error('Species check failed: Object must be an instance of Car class');
+        }
         return this[cloneCarSymbol]();
     }
 }
