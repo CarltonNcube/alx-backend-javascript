@@ -1,7 +1,8 @@
-export default function appendToEachArrayValue(array, appendString) {
-  for (let value of array) {
-    value = appendString + value;
+// Creates an iterator object from the provided report object.
+export default function createIteratorObject(report) {
+  const result = [];
+  for (const idx of Object.values(report.allEmployees)) {
+    result.push(...idx);
   }
-
-  return array;
+  return result;
 }
