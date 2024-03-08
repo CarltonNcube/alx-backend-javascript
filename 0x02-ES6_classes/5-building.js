@@ -1,4 +1,4 @@
-//Define an abstract class named building
+// Define an abstract class named building
 export default class Building {
   constructor(sqft) {
     if (this.constructor !== Building) {
