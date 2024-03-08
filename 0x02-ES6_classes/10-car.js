@@ -8,15 +8,16 @@ class Car {
     this._color = color;
   }
 
+  static get [Symbol.species]() {
+    return this;
+  }
+
   [cloneCarSymbol]() {
     const { _brand, _motor, _color } = this;
-    return new Car(_brand, _motor, _color);
+    return new (this.constructor[Symbol.species])(_brand, _motor, _color);
   }
 
   cloneCar() {
-    if (!(this instanceof Car)) {
-      throw new Error('Species check failed: Object must be an instance of Car class');
-    }
     return this[cloneCarSymbol]();
   }
 }
