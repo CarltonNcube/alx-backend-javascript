@@ -1,5 +1,4 @@
-// Iterates through the report object with iterator and returns a string of employee names separated by '|'.
-export default function iterateThroughObject({ allEmployees }) {
-  const employeeNames = Object.values(allEmployees).flatMap(departmentEmployees => departmentEmployees);
-  return employeeNames.join(' | ');
+// Joins the elements of the array 'reportWithIterator' into a string separated by '|'.
+export default function iterateThroughObject(reportWithIterator) {
+    return reportWithIterator.join(' | ');
 }
