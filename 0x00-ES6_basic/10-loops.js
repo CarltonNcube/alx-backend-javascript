@@ -1,8 +1,9 @@
 // Creates an iterator object from the provided report object.
-export default function createIteratorObject(report) {
-  const result = [];
-  for (const idx of Object.values(report.allEmployees)) {
-    result.push(...idx);
+export default function appendToEachArrayValue(array, appendString) {
+    const arrayEnd = [];
+    for (const idx of array) {
+      arrayEnd.push(`${appendString}${idx}`);
+    }
+  
+    return arrayEnd;
   }
-  return result;
-}
