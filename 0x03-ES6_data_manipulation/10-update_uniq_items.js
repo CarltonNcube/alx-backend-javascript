@@ -1,14 +1,14 @@
 // Function that updates quantities of unique items in the map
-const updateUniqueItems = (map) => {
-  if (!(map instanceof Map)) {
-    throw new Error("Cannot process");
+const updateUniqueItems = (items) => {
+  if (!(items instanceof Map)) {
+    throw new Error('Cannot process');
   }
-
-  map.forEach((quantity, item) => {
-    if (quantity === 1) {
-      map.set(item, 100);
+  for (const [k, v] of items.entries()) {
+    if (v === 1) {
+      items.set(k, 100);
     }
-  });
+  }
+  return items;
 };
 
 export default updateUniqueItems;
