@@ -1,5 +1,4 @@
 // Function that returns an array of student ids from a list of objects
-
 const getListStudentIds = (students) => {
     if (!Array.isArray(students)) {
         return [];
