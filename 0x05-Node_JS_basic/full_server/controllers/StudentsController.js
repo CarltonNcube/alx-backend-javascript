@@ -1,33 +1,26 @@
-const utils = require('../utils');
+import { readDatabase } from '../utils';
 
-class StudentsController {
-    static getAllStudents(req, res) {
-        try {
-            const data = utils.readDatabase();
-            res.status(200);
-            console.log('This is the list of our students');
-            // process data...
-        } catch (err) {
-            res.status(500);
-            throw new Error('Cannot load the database');
-        }
+export class StudentsController {
+  static async getAllStudents(request, response) {
+    try {
+      const data = await readDatabase('/path/to/database');
+      // process and return data here
+    } catch (error) {
+      return response.status(500).send('Cannot load the database');
+    }
+  }
+
+  static async getAllStudentsByMajor(request, response) {
+    const { major } = request.params;
+    if (!['CS', 'SWE'].includes(major)) {
+      return response.status(500).send('Major parameter must be CS or SWE');
     }
 
-    static getAllStudentsByMajor(req, res) {
-        const { major } = req.params;
-        if (!['CS', 'SWE'].includes(major)) {
-            res.status(500);
-            throw new Error('Major parameter must be CS or SWE');
-        }
-        try {
-            const data = utils.readDatabase();
-            res.status(200);
-            // process data...
-        } catch (err) {
-            res.status(500);
-            throw new Error('Cannot load the database');
-        }
+    try {
+      const data = await readDatabase('/path/to/database');
+      // process and return data here
+    } catch (error) {
+      return response.status(500).send('Cannot load the database');
     }
+  }
 }
-
-module.exports = StudentsController;
