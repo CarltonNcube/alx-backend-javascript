@@ -7,12 +7,13 @@ export class StudentsController {
       const database = await readDatabase('./database.csv');
       const fields = Object.keys(database).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
 
-      res.status(200).send('This is the list of our students\n');
+      let response = 'This is the list of our students\n';
       fields.forEach(field => {
         const students = database[field].join(', ');
-        res.write(`Number of students in ${field}: ${database[field].length}. List: ${students}\n`);
+        response += `Number of students in ${field}: ${database[field].length}. List: ${students}\n`;
       });
-      res.end();
+
+      res.status(200).send(response);
     } catch (error) {
       res.status(500).send('Cannot load the database');
     }
